@@ -1,0 +1,5 @@
+.env
+Assets/
+node_modules/
+package-lock.json
+READMEinstructions.md

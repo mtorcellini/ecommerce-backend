@@ -21,8 +21,17 @@ router.get('/:id', async (req, res) => {
   return res.status(200).json(data);
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
+  // expect req.body
+  /*
+    {
+      category_name: "Sports",
+    }
+  */
+  
+  const newData = await Category.create(req.body);
+  return res.status(201).json(newData); 
 });
 
 router.put('/:id', (req, res) => {

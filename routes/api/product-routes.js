@@ -7,14 +7,14 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', async (req, res) => {
   // find all products
   const data = await Product.findAll({include: [Category, Tag]});
-  res.json(data);
+  res.status(200).json(data);
 });
 
 // get one product
 router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   const data = await Product.findByPk(req.params.id, {include : [Category, Tag]});
-  res.json(data);
+  res.status(200).json(data);
 });
 
 // create new product
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
         return ProductTag.bulkCreate(productTagIdArr);
       }
       // if no product tags, just respond
-      res.status(200).json(product);
+      res.status(201).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {

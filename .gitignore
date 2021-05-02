@@ -3,3 +3,4 @@ Assets/
 node_modules/
 package-lock.json
 READMEinstructions.md
+.DS_Store

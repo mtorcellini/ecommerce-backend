@@ -25,8 +25,18 @@ router.get('/:id', async (req, res) => {
 
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new tag
+
+  // expect req.body
+  /* 
+    {
+      "tag_name" : "extra spicy"
+    }
+  */
+
+  const newTag = await Tag.create(req.body);
+  return res.status(201).json(newTag)
 });
 
 router.put('/:id', (req, res) => {
